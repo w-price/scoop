@@ -1,13 +1,23 @@
 :root {
   --bg: #f6f6f1;
   --surface: #ffffff;
+
   --text: #111111;
-  --muted: #6c6c66;
+  --muted: #6d6d67;
+
   --border: #deded7;
+
   --accent: #b7ff3c;
+
   --dark: #111111;
+
   --max-width: 1180px;
 }
+
+
+/* =========================
+   RESET
+   ========================= */
 
 * {
   box-sizing: border-box;
@@ -19,8 +29,14 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   background: var(--bg);
+
   color: var(--text);
 }
 
@@ -34,101 +50,169 @@ input {
   font: inherit;
 }
 
+button {
+  border: 0;
+}
+
+
+/* =========================
+   GLOBAL
+   ========================= */
+
 .container {
   width: min(92%, var(--max-width));
+
   margin: 0 auto;
 }
 
-/* NAV */
+.eyebrow {
+  margin: 0 0 18px;
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.16em;
+}
+
+
+/* =========================
+   NAV
+   ========================= */
 
 .nav {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   padding: 28px 0;
 }
 
 .logo {
   font-size: 2rem;
+
   font-weight: 800;
+
   letter-spacing: -0.06em;
 }
 
 .nav-link {
   font-size: 0.95rem;
+
   font-weight: 600;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+   ========================= */
 
 .hero {
   min-height: 78vh;
+
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 72px;
+
   align-items: center;
+
   padding: 70px 0 110px;
 }
 
-.eyebrow {
-  margin: 0 0 18px;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-weight: 700;
+.hero-copy {
+  min-width: 0;
 }
 
 h1 {
   margin: 0;
+
   max-width: 620px;
-  font-size: clamp(4rem, 7vw, 7rem);
+
+  font-size: clamp(
+    4rem,
+    7vw,
+    7rem
+  );
+
   line-height: 0.95;
+
   letter-spacing: -0.06em;
 }
 
 .subhead {
   max-width: 520px;
+
   margin: 28px 0 34px;
-  color: var(--muted);
+
   font-size: 1.2rem;
+
   line-height: 1.5;
+
+  color: var(--muted);
 }
 
-/* RIDE PANEL */
+
+/* =========================
+   RIDE FORM
+   ========================= */
 
 .ride-panel {
   max-width: 520px;
+
   background: var(--surface);
+
   border: 1px solid var(--border);
+
   border-radius: 18px;
+
   overflow: hidden;
 }
 
 .input-row {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
+
   padding: 18px 20px;
 }
 
 .input-row input {
   width: 100%;
+
   border: 0;
+
   outline: none;
+
   background: transparent;
+
   font-size: 1rem;
+
+  color: var(--text);
 }
 
 .input-divider {
   height: 1px;
-  background: var(--border);
+
   margin-left: 54px;
+
+  background: var(--border);
 }
 
 .input-dot {
   width: 12px;
+
   height: 12px;
+
   border-radius: 50%;
+
   flex-shrink: 0;
 }
 
@@ -138,305 +222,300 @@ h1 {
 
 .destination-dot {
   background: var(--accent);
+
   border: 2px solid var(--text);
 }
 
+
+/* =========================
+   BUTTONS
+   ========================= */
+
 .button-primary {
   margin-top: 16px;
-  border: 0;
+
+  padding: 16px 28px;
+
   border-radius: 999px;
-  padding: 16px 26px;
+
   background: var(--text);
+
   color: white;
+
   font-weight: 700;
+
   cursor: pointer;
 }
 
 .button-primary:hover {
-  opacity: 0.9;
-}
-
-.availability {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 18px;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.status-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(183, 255, 60, 0.22);
-}
-
-/* MAP */
-
-.hero-map {
-  display: flex;
-  justify-content: center;
-}
-
-.map-card {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  min-height: 520px;
-  overflow: hidden;
-  border-radius: 28px;
-  background: #e9e9e2;
-  border: 1px solid var(--border);
-}
-
-.road {
-  position: absolute;
-  background: #d3d3cb;
-  border-radius: 999px;
-}
-
-.road-a {
-  width: 600px;
-  height: 26px;
-  left: -60px;
-  top: 200px;
-  transform: rotate(-10deg);
-}
-
-.road-b {
-  width: 28px;
-  height: 620px;
-  left: 260px;
-  top: -50px;
-  transform: rotate(14deg);
-}
-
-.road-c {
-  width: 500px;
-  height: 22px;
-  left: 40px;
-  top: 370px;
-  transform: rotate(7deg);
-}
-
-.building {
-  position: absolute;
-  background: #f8f8f4;
-  border: 1px solid #d7d7cf;
-  border-radius: 12px;
-  padding: 14px;
-  font-size: 0.78rem;
-  color: #77776f;
-}
-
-.building-one {
-  left: 56px;
-  top: 76px;
-  width: 128px;
-  height: 92px;
-}
-
-.building-two {
-  right: 48px;
-  top: 105px;
-  width: 122px;
-  height: 84px;
-}
-
-.building-three {
-  right: 60px;
-  bottom: 76px;
-  width: 145px;
-  height: 98px;
-}
-
-/* ROUTE */
-
-.route-segment {
-  position: absolute;
-  height: 5px;
-  background: var(--text);
-  border-radius: 999px;
-  transform-origin: left center;
-}
-
-.route-one {
-  width: 180px;
-  left: 145px;
-  top: 225px;
-  transform: rotate(38deg);
-}
-
-.route-two {
-  width: 140px;
-  left: 285px;
-  top: 336px;
-  transform: rotate(18deg);
-}
-
-/* MAP POINTS */
-
-.map-point {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.user-point {
-  left: 124px;
-  top: 200px;
-}
-
-.destination-point {
-  right: 78px;
-  bottom: 142px;
-}
-
-.map-point-dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--text);
-  border: 4px solid var(--surface);
-}
-
-.map-point-dot.destination {
-  background: var(--accent);
-}
-
-.map-label {
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: var(--surface);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-/* SCOOTER MARKER */
-
-.scooter-marker {
-  position: absolute;
-  left: 226px;
-  top: 268px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.scooter-light {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: var(--accent);
-  font-weight: 900;
-  border: 2px solid var(--text);
-}
-
-.scooter-label {
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: var(--surface);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-/* TRIP CARD */
-
-.trip-card {
-  position: absolute;
-  left: 26px;
-  bottom: 24px;
-  right: 26px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 18px;
-  background: var(--surface);
-  border-radius: 16px;
-}
-
-.trip-card div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.trip-label {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-/* DRIVER SECTION */
-
-.driver-section {
-  background: var(--dark);
-  color: white;
-  padding: 100px 0;
-}
-
-.driver-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
-  align-items: center;
-}
-
-.eyebrow-light {
-  color: #aaa;
-}
-
-h2 {
-  margin: 0;
-  font-size: clamp(3rem, 5vw, 5rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-}
-
-.driver-copy p {
-  margin: 0 0 28px;
-  color: #c4c4c4;
-  max-width: 500px;
-  font-size: 1.2rem;
-  line-height: 1.5;
+  opacity: 0.88;
 }
 
 .button-secondary {
   display: inline-block;
+
   padding: 15px 24px;
+
   border-radius: 999px;
+
   background: var(--accent);
+
   color: var(--text);
+
   font-weight: 700;
 }
 
-/* MOBILE */
+
+/* =========================
+   AVAILABILITY
+   ========================= */
+
+.availability {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  font-size: 0.92rem;
+
+  color: var(--muted);
+}
+
+.status-dot {
+  width: 9px;
+
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 0 4px rgba(
+      183,
+      255,
+      60,
+      0.22
+    );
+}
+
+
+/* =========================
+   MAP
+   ========================= */
+
+.hero-map {
+  position: relative;
+
+  min-width: 0;
+}
+
+#map {
+  width: 100%;
+
+  height: 520px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  border: 1px solid var(--border);
+}
+
+
+/* Clean Leaflet slightly */
+
+.leaflet-control-attribution {
+  font-size: 9px !important;
+}
+
+.leaflet-tooltip {
+  border: 0 !important;
+
+  border-radius: 999px !important;
+
+  padding: 7px 10px !important;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif !important;
+
+  font-weight: 700 !important;
+
+  box-shadow: none !important;
+}
+
+.leaflet-tooltip::before {
+  display: none;
+}
+
+
+/* =========================
+   RIDER MARKERS
+   ========================= */
+
+.rider-marker {
+  background: transparent !important;
+
+  border: 0 !important;
+}
+
+.rider-badge {
+  width: 42px;
+
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: var(--accent);
+
+  border: 2px solid var(--text);
+
+  font-size: 1rem;
+
+  font-weight: 900;
+
+  color: var(--text);
+}
+
+
+/* =========================
+   MAP TIME CARD
+   ========================= */
+
+.map-overlay {
+  position: absolute;
+
+  left: 20px;
+
+  right: 20px;
+
+  bottom: 20px;
+
+  z-index: 500;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.94
+  );
+
+  backdrop-filter: blur(8px);
+}
+
+.time-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  color: var(--muted);
+}
+
+.time-row strong {
+  color: var(--text);
+}
+
+
+/* =========================
+   DRIVER SECTION
+   ========================= */
+
+.driver-section {
+  padding: 100px 0;
+
+  background: var(--dark);
+
+  color: white;
+}
+
+.driver-inner {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+.eyebrow-light {
+  color: #a7a7a7;
+}
+
+h2 {
+  margin: 0;
+
+  font-size: clamp(
+    3rem,
+    5vw,
+    5rem
+  );
+
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
+}
+
+.driver-copy p {
+  max-width: 500px;
+
+  margin: 0 0 28px;
+
+  font-size: 1.2rem;
+
+  line-height: 1.5;
+
+  color: #c5c5c5;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
 
 @media (max-width: 850px) {
 
   .hero {
     grid-template-columns: 1fr;
+
     gap: 48px;
+
     padding-top: 40px;
   }
 
-  .hero-map {
-    justify-content: flex-start;
-  }
-
-  .map-card {
-    max-width: 100%;
+  #map {
+    height: 450px;
   }
 
   .driver-inner {
     grid-template-columns: 1fr;
+
     gap: 34px;
   }
+
 }
+
 
 @media (max-width: 560px) {
 
@@ -452,27 +531,12 @@ h2 {
     padding-bottom: 70px;
   }
 
-  .map-card {
-    min-height: 440px;
+  #map {
+    height: 400px;
   }
 
-  .trip-card {
+  .map-overlay {
     grid-template-columns: 1fr;
   }
 
-  .road-a {
-    top: 180px;
-  }
-
-  .route-one {
-    width: 130px;
-  }
-
-  .route-two {
-    width: 100px;
-  }
-
-  .scooter-marker {
-    left: 200px;
-  }
 }

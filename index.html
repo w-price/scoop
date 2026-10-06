@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Scoot</title>
+
   <link rel="stylesheet" href="styles.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
 </head>
 
 <body>
@@ -14,11 +25,13 @@
     <a href="#drive" class="nav-link">Drive</a>
   </header>
 
+
   <main>
 
     <section class="hero container">
 
       <div class="hero-copy">
+
         <p class="eyebrow">Campus rides</p>
 
         <h1>Get across campus faster.</h1>
@@ -27,78 +40,66 @@
           Catch a ride with a student already headed your way.
         </p>
 
+
         <div class="ride-panel">
+
           <div class="input-row">
             <span class="input-dot pickup-dot"></span>
-            <input type="text" placeholder="Pickup location" />
+
+            <input
+              type="text"
+              placeholder="Pickup location"
+              value="Harvard Yard"
+            />
           </div>
+
 
           <div class="input-divider"></div>
 
+
           <div class="input-row">
             <span class="input-dot destination-dot"></span>
-            <input type="text" placeholder="Where are you going?" />
+
+            <input
+              type="text"
+              placeholder="Where are you going?"
+              value="Science Center"
+            />
           </div>
+
         </div>
 
-        <button class="button-primary">Find a ride</button>
+
+        <button class="button-primary">
+          Find a ride
+        </button>
+
 
         <div class="availability">
           <span class="status-dot"></span>
-          3 riders nearby · Typical pickup 2–4 min
+
+          <span>
+            3 riders nearby · Typical pickup 2–4 min
+          </span>
         </div>
+
       </div>
+
 
       <div class="hero-map">
 
-        <div class="map-card">
+        <div id="map"></div>
 
-          <div class="road road-a"></div>
-          <div class="road road-b"></div>
-          <div class="road road-c"></div>
+        <div class="map-overlay">
 
-          <div class="building building-one">
-            <span>Library</span>
+          <div class="time-row">
+            <span>Walking</span>
+            <strong>14 min</strong>
           </div>
 
-          <div class="building building-two">
-            <span>Dining</span>
-          </div>
-
-          <div class="building building-three">
-            <span>Science</span>
-          </div>
-
-          <div class="route">
-            <div class="route-segment route-one"></div>
-            <div class="route-segment route-two"></div>
-          </div>
-
-          <div class="map-point user-point">
-            <span class="map-point-dot"></span>
-            <span class="map-label">You</span>
-          </div>
-
-          <div class="scooter-marker">
-            <span class="scooter-light">S</span>
-            <span class="scooter-label">1 min away</span>
-          </div>
-
-          <div class="map-point destination-point">
-            <span class="map-point-dot destination"></span>
-            <span class="map-label">Science Center</span>
-          </div>
-
-          <div class="trip-card">
-            <div>
-              <span class="trip-label">Walking</span>
-              <strong>14 min</strong>
-            </div>
-
-            <div>
-              <span class="trip-label">Scoot</span>
-              <strong>4 min</strong>
-            </div>
+          <div class="time-row">
+            <span>Scoot</span>
+            <strong>4 min</strong>
           </div>
 
         </div>
@@ -107,26 +108,156 @@
 
     </section>
 
+
+
     <section class="driver-section" id="drive">
+
       <div class="container driver-inner">
 
         <div>
-          <p class="eyebrow eyebrow-light">Drive with Scoot</p>
-          <h2>Already going somewhere?</h2>
-        </div>
-
-        <div class="driver-copy">
-          <p>
-            Take someone with you and earn on trips you were already making.
+          <p class="eyebrow eyebrow-light">
+            Drive with Scoot
           </p>
 
-          <a href="#" class="button-secondary">Drive with Scoot</a>
+          <h2>
+            Already going somewhere?
+          </h2>
+        </div>
+
+
+        <div class="driver-copy">
+
+          <p>
+            Take someone with you and earn on trips
+            you were already making.
+          </p>
+
+          <a href="#" class="button-secondary">
+            Drive with Scoot
+          </a>
+
         </div>
 
       </div>
+
     </section>
 
   </main>
+
+
+
+  <script>
+
+    const map = L.map("map", {
+      zoomControl: false,
+      scrollWheelZoom: false
+    }).setView([42.3751, -71.1168], 16);
+
+
+    L.tileLayer(
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        attribution: "&copy; OpenStreetMap contributors"
+      }
+    ).addTo(map);
+
+
+    const pickupLocation = [42.3744, -71.1169];
+
+    const destinationLocation = [42.3763, -71.1166];
+
+
+    const pickup = L.circleMarker(
+      pickupLocation,
+      {
+        radius: 9,
+        color: "#111111",
+        weight: 3,
+        fillColor: "#111111",
+        fillOpacity: 1
+      }
+    ).addTo(map);
+
+
+    pickup.bindTooltip(
+      "Harvard Yard",
+      {
+        permanent: true,
+        direction: "right",
+        offset: [12, 0]
+      }
+    );
+
+
+    const destination = L.circleMarker(
+      destinationLocation,
+      {
+        radius: 9,
+        color: "#111111",
+        weight: 3,
+        fillColor: "#b7ff3c",
+        fillOpacity: 1
+      }
+    ).addTo(map);
+
+
+    destination.bindTooltip(
+      "Science Center",
+      {
+        permanent: true,
+        direction: "right",
+        offset: [12, 0]
+      }
+    );
+
+
+    L.polyline(
+      [
+        pickupLocation,
+        [42.3749, -71.1172],
+        [42.3755, -71.1171],
+        destinationLocation
+      ],
+      {
+        color: "#111111",
+        weight: 5,
+        opacity: 0.9
+      }
+    ).addTo(map);
+
+
+    const riderIcon = L.divIcon({
+      className: "rider-marker",
+      html: "<div class='rider-badge'>S</div>",
+      iconSize: [42, 42],
+      iconAnchor: [21, 21]
+    });
+
+
+    L.marker(
+      [42.3750, -71.1182],
+      {
+        icon: riderIcon
+      }
+    ).addTo(map);
+
+
+    L.marker(
+      [42.3739, -71.1155],
+      {
+        icon: riderIcon
+      }
+    ).addTo(map);
+
+
+    L.marker(
+      [42.3768, -71.1180],
+      {
+        icon: riderIcon
+      }
+    ).addTo(map);
+
+  </script>
 
 </body>
 </html>
