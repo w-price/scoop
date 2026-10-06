@@ -10,11 +10,11 @@
 
   <link
     rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
   />
 
   <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js">
   </script>
 </head>
 
@@ -24,7 +24,6 @@
     <a href="#" class="logo">scoot</a>
     <a href="#drive" class="nav-link">Drive</a>
   </header>
-
 
   <main>
 
@@ -40,7 +39,6 @@
           Catch a ride with a student already headed your way.
         </p>
 
-
         <div class="ride-panel">
 
           <div class="input-row">
@@ -53,9 +51,7 @@
             />
           </div>
 
-
           <div class="input-divider"></div>
-
 
           <div class="input-row">
             <span class="input-dot destination-dot"></span>
@@ -69,11 +65,9 @@
 
         </div>
 
-
         <button class="button-primary">
           Find a ride
         </button>
-
 
         <div class="availability">
           <span class="status-dot"></span>
@@ -84,7 +78,6 @@
         </div>
 
       </div>
-
 
       <div class="hero-map">
 
@@ -108,8 +101,6 @@
 
     </section>
 
-
-
     <section class="driver-section" id="drive">
 
       <div class="container driver-inner">
@@ -123,7 +114,6 @@
             Already going somewhere?
           </h2>
         </div>
-
 
         <div class="driver-copy">
 
@@ -144,15 +134,11 @@
 
   </main>
 
-
-
   <script>
-
     const map = L.map("map", {
       zoomControl: false,
       scrollWheelZoom: false
     }).setView([42.3751, -71.1168], 16);
-
 
     L.tileLayer(
       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -161,11 +147,8 @@
       }
     ).addTo(map);
 
-
     const pickupLocation = [42.3744, -71.1169];
-
     const destinationLocation = [42.3763, -71.1166];
-
 
     const pickup = L.circleMarker(
       pickupLocation,
@@ -178,7 +161,6 @@
       }
     ).addTo(map);
 
-
     pickup.bindTooltip(
       "Harvard Yard",
       {
@@ -187,7 +169,6 @@
         offset: [12, 0]
       }
     );
-
 
     const destination = L.circleMarker(
       destinationLocation,
@@ -200,7 +181,6 @@
       }
     ).addTo(map);
 
-
     destination.bindTooltip(
       "Science Center",
       {
@@ -209,7 +189,6 @@
         offset: [12, 0]
       }
     );
-
 
     L.polyline(
       [
@@ -225,14 +204,12 @@
       }
     ).addTo(map);
 
-
     const riderIcon = L.divIcon({
       className: "rider-marker",
       html: "<div class='rider-badge'>S</div>",
       iconSize: [42, 42],
       iconAnchor: [21, 21]
     });
-
 
     L.marker(
       [42.3750, -71.1182],
@@ -241,7 +218,6 @@
       }
     ).addTo(map);
 
-
     L.marker(
       [42.3739, -71.1155],
       {
@@ -249,14 +225,12 @@
       }
     ).addTo(map);
 
-
     L.marker(
       [42.3768, -71.1180],
       {
         icon: riderIcon
       }
     ).addTo(map);
-
   </script>
 
 </body>
